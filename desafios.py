@@ -86,7 +86,15 @@ def gerar_relatorio_final(funcoes_concluidas):
     ->
     "Desafio concluído! 2 funções implementadas com sucesso."
     """
-    pass
+    # Validação simples — garante que seja uma lista e que não esteja vazia
+    if not isinstance(funcoes_concluidas, list) or not funcoes_concluidas:
+        return "Nenhuma função implementada ainda."
+
+    # Conta quantas funções foram concluídas
+    quantidade = len(funcoes_concluidas)
+
+    # Retorna a mensagem final formatada
+    return f"Desafio concluído! {quantidade} função{'s' if quantidade > 1 else ''} implementada{'s' if quantidade > 1 else ''} com sucesso."
 
 
 def main():
@@ -125,6 +133,16 @@ def main():
     print(verificar_tag_valida("v10.12")) # True
     print(verificar_tag_valida("1.0"))    # False
     print(verificar_tag_valida("v1"))     # False
+
+    print("\n---5# Gerar relatorio ---")
+    print(gerar_relatorio_final(["mostrar_mensagem_inicial"]))  
+    # Saída: Desafio concluído! 1 função implementada com sucesso.
+
+    print(gerar_relatorio_final(["mostrar_mensagem_inicial", "listar_comandos_git_basicos", "criar_mensagem_commit"]))  
+    # Saída: Desafio concluído! 3 funções implementadas com sucesso.
+
+    print(gerar_relatorio_final([]))  
+    # Saída: Nenhuma função implementada ainda.
 
 if __name__ == "__main__":
     main()
