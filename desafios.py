@@ -55,7 +55,25 @@ def verificar_tag_valida(tag):
     Verifica se uma tag está no formato 'vX.Y' (ex: v1.0, v2.1).
     Retorna True se o formato for válido, caso contrário False.
     """
-    pass
+       # Verifica se começa com 'v'
+    if not tag.startswith("v"):
+        return False
+
+    # Remove o 'v' do começo
+    parte_numerica = tag[1:]
+
+    # Divide a parte numérica pelo ponto
+    partes = parte_numerica.split(".")
+
+    # Precisa ter exatamente duas partes (antes e depois do ponto)
+    if len(partes) != 2:
+        return False
+
+    # Verifica se ambas as partes são números
+    if partes[0].isdigit() and partes[1].isdigit():
+        return True
+    else:
+        return False
 
 
 def gerar_relatorio_final(funcoes_concluidas):
@@ -99,6 +117,14 @@ def main():
         print(mensagem_commit)
     else:
         print(mensagem_commit)
+
+    # Validaco Tag
+    print("\n---4# Validação Tag ---")
+    print(verificar_tag_valida("v1.0"))   # True
+    print(verificar_tag_valida("v2.5"))   # True
+    print(verificar_tag_valida("v10.12")) # True
+    print(verificar_tag_valida("1.0"))    # False
+    print(verificar_tag_valida("v1"))     # False
 
 if __name__ == "__main__":
     main()
