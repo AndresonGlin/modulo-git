@@ -26,8 +26,16 @@ def listar_comandos_git_basicos():
     Exemplo de saída:
     ["git init", "git add", "git commit", "git status", "git push"]
     """
-    pass
-
+    comandos = [
+        "git init",     # Inicia um novo repositório
+        "git clone",    # Baixa um repositório existente
+        "git add",      # Adiciona arquivos ao staging area
+        "git commit",   # Confirma as mudanças
+        "git status",   # Vê o estado do repositório
+        "git push",     # Envia mudanças para o repositório remoto
+        "git pull"      # Baixa e integra mudanças do repositório remoto
+    ]
+    return comandos
 
 def criar_mensagem_commit(funcao_nome):
     """
@@ -58,3 +66,26 @@ def gerar_relatorio_final(funcoes_concluidas):
     "Desafio concluído! 2 funções implementadas com sucesso."
     """
     pass
+
+
+def main():
+    """
+    Função principal para executar e exibir o resultado das funções.
+    """
+    # Exibe a mensagem inicial
+    mensagem = mostrar_mensagem_inicial()
+    print("---1# Mensagem ---")
+    print(mensagem)
+    
+    # Exibe a lista de comandos
+    comandos = listar_comandos_git_basicos()
+    print("\n---2# Comandos Git Básicos ---")
+    
+    if comandos:
+        for i, comando in enumerate(comandos, 1):
+            print(f"{i}. {comando}")
+    else:
+        print("Nenhum comando foi listado.")    
+
+if __name__ == "__main__":
+    main()
