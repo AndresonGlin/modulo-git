@@ -44,7 +44,10 @@ def criar_mensagem_commit(funcao_nome):
     criar_mensagem_commit("listar_comandos_git_basicos") ->
     "Implementa função listar_comandos_git_basicos"
     """
-    pass
+    if not funcao_nome or not isinstance(funcao_nome, str):
+        return "Erro: nome de função inválido."
+    
+    return f"Implementa função {funcao_nome}"
 
 
 def verificar_tag_valida(tag):
@@ -86,6 +89,16 @@ def main():
             print(f"{i}. {comando}")
     else:
         print("Nenhum comando foi listado.")    
+    
+    # Criacao da mensagem de commit 
+    print("\n---3# Mensagem de Commit ---")
+    funcao_teste = "listar_comandos_git_basicos"
+    mensagem_commit = criar_mensagem_commit(funcao_teste)
+    
+    if mensagem_commit.startswith("Erro"):
+        print(mensagem_commit)
+    else:
+        print(mensagem_commit)
 
 if __name__ == "__main__":
     main()
